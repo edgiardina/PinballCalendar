@@ -45,7 +45,7 @@ namespace PinballCalendar.Controllers
             //hide leagues since they often clutter the calendar
             if (!showLeagues)
             {
-                calendarEvents = calendarEvents.Where(n => !n.Summary.Contains("league") && (n.DtEnd.Subtract(n.DtStart).TotalDays <= 3));
+                calendarEvents = calendarEvents.Where(n => !n.Summary.ToLower().Contains("league") && (n.DtEnd.Subtract(n.DtStart).TotalDays <= 3));
             }
             
             var calendar = new Calendar();
