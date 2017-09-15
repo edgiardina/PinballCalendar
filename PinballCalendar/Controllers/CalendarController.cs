@@ -38,7 +38,9 @@ namespace PinballCalendar.Controllers
                     Url = new Uri(n.Website),
                     GeographicLocation = new GeographicLocation(n.Latitude, n.Longitude),
                     Location = $"{n.City}, {n.State} {n.CountryName}",
-                    Organizer = new Organizer(n.DirectorName),
+                    //Can't show an organizer if you want this to work on MacOS
+                    //https://apple.stackexchange.com/questions/47484/why-does-ical-often-say-the-server-responded-403-to-operation-caldavsetpropert
+                    //Organizer = new Organizer(n.DirectorName),                    
                     Uid = $"tournament-{n.TournamentId}@ifpapinball.com"
             });
 
