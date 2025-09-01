@@ -22,9 +22,13 @@ builder.Services.AddScoped<IPinballRankingApi>(serviceProvider =>
     var configuration = serviceProvider.GetRequiredService<IConfiguration>();
     var apiKey = configuration["WPPRKey"];
     
+    // Debug logging to help troubleshoot UserSecrets
+    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("WPPRKey from configuration: {ApiKey}", string.IsNullOrEmpty(apiKey) ? "[NOT SET]" : "[SET]");
+    
     if (string.IsNullOrEmpty(apiKey))
     {
-        throw new InvalidOperationException("WPPR API key is not configured. Please set the 'WPPRKey' in appsettings.json or environment variables.");
+        throw new InvalidOperationException("WPPR API key is not configured. Please set the 'WPPRKey' in appsettings.json or user secrets.");
     }
     
     return new PinballRankingApi(apiKey);
@@ -42,6 +46,22 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Log configuration sources for debugging (only in Development)
+if (app.Environment.IsDevelopment())
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    var configuration = app.Services.GetRequiredService<IConfiguration>();
+    
+    logger.LogInformation("Configuration sources:");
+    if (configuration is IConfigurationRoot configRoot)
+    {
+        foreach (var provider in configRoot.Providers)
+        {
+            logger.LogInformation("- {ProviderType}", provider.GetType().Name);
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

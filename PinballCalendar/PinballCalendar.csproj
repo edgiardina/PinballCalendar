@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>PinballCalendar</RootNamespace>
     <AssemblyName>PinballCalendar</AssemblyName>
+    <UserSecretsId>a788d072-bca0-4d58-ab35-6a32abb5404b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

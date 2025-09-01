@@ -23,7 +23,6 @@ namespace PinballCalendar.Controllers
 
             try
             {
-
                 var geocodedAddress = await GeocodingService.GeocodeAsync(address);
 
                 if (showLeagues)
