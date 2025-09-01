@@ -38,6 +38,15 @@ When running in development mode, visit:
 - Swagger UI: `https://localhost:5001/swagger` (or the port shown in console)
 - OpenAPI spec: `https://localhost:5001/swagger/v1/swagger.json`
 
+## Deployment
+
+### Azure App Service
+This application is deployed to Azure App Service with automated CI/CD via GitHub Actions.
+
+- **Production URL**: `https://pinballcalendar20170829102021.azurewebsites.net`
+- **Deployment**: Automatic on merge to `main` branch
+- **Setup Guide**: See [AZURE_DEPLOYMENT_SETUP.md](AZURE_DEPLOYMENT_SETUP.md)
+
 ## Environment Variables
 
 For production deployment, you can set configuration via environment variables:
