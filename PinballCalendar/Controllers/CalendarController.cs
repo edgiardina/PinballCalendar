@@ -31,7 +31,8 @@ namespace PinballCalendar.Controllers
                                                                                  geocodedAddress.Longitude, distance,
                                                                                  DistanceType.Miles,
                                                                                  startDate: DateTime.Now,
-                                                                                 endDate: DateTime.Now.AddYears(1));
+                                                                                 endDate: DateTime.Now.AddYears(1),
+                                                                                 totalReturn: 500);
                 }
                 else
                 {
@@ -40,7 +41,8 @@ namespace PinballCalendar.Controllers
                                                                                  DistanceType.Miles,                                                                                 
                                                                                  startDate: DateTime.Now,
                                                                                  endDate: DateTime.Now.AddYears(1),
-                                                                                 tournamentEventType: TournamentEventType.Tournament);
+                                                                                 tournamentEventType: TournamentEventType.Tournament,
+                                                                                 totalReturn: 500);
                 }
 
                 var calendarEvents = pinballEvents.Tournaments
