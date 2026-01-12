@@ -49,7 +49,7 @@ namespace PinballCalendar.Controllers
                     .Select(n =>
                     new CalendarEvent
                     {
-                        Description = n.EventName,
+                        Description = n.Details,
                         Summary = n.TournamentName,
                         DtStart = new CalDateTime(n.EventStartDate.DateTime),
                         DtEnd = n.EventEndDate.HasValue ? new CalDateTime(n.EventEndDate.Value.DateTime) : null,
